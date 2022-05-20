@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet, Link } from "react-router-dom";
+import React from 'react';
 
-function App() {
+import {
+    Container,
+    Row,
+    Col,
+    Navbar,
+    Nav,
+    NavDropdown,
+    Image,
+    Figure,
+    
+} from 'react-bootstrap'
+
+
+export function App() {
+  // This is the header element that later on I will rename and add it to the components folder
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Navbar bg="light" expand="lg">
+    <Container>
+        <Navbar.Brand href="/">Logo</Navbar.Brand>
+        <Nav className="me-auto">
+            <Nav.Link href="/candidate/browse-jobs">Search Jobs</Nav.Link>
+            <Nav.Link href="/employer/browse-companies">Search Companies</Nav.Link>
+        </Nav>
+
+        <Nav className="me-auto">
+ 
+            <Nav.Link href="/employer/publish-jobpost">Post a Job</Nav.Link>
+            <Nav.Link href="/login">Log In</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+        </Nav>
+
+        <Outlet />
+
+
+
+    </Container>
+    </Navbar>
   );
 }
-
-export default App;
