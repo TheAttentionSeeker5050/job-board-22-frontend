@@ -21,6 +21,8 @@ export function APICall2 (email, password){
             if (data.access && data.refresh) {
                 localStorage.setItem("access_token", data.access)
                 localStorage.setItem("refresh_token", data.refresh)
+                localStorage.setItem("user_email", data.email)
+                localStorage.setItem("user_id", data.user_id)
                 window.location.replace("/")
 
             } else {

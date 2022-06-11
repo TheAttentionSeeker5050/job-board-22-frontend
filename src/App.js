@@ -19,7 +19,7 @@ function userLoggedButtons() {
     <Nav className="me-auto">
       <Nav.Link href="/employer/publish-jobpost">Post a Job</Nav.Link>
       <Nav.Link href="/logout">Log out</Nav.Link>
-      <Nav.Link href="/logout">profile</Nav.Link>
+      <Nav.Link href="/profile">Profile</Nav.Link>
     </Nav>
   )
 }
@@ -30,7 +30,7 @@ function userNotLoggedButtons() {
     <Nav className="me-auto">
       <Nav.Link href="/employer/publish-jobpost">Post a Job</Nav.Link>
       <Nav.Link href="/login">Log In</Nav.Link>
-        <Nav.Link href="/logout">Register</Nav.Link>
+        <Nav.Link href="/register">Register</Nav.Link>
     </Nav>
 
   )
@@ -39,9 +39,9 @@ function userNotLoggedButtons() {
 export function App() {
 
   var user_account_buttons = userNotLoggedButtons()
-  var user_status_is_200 = localStorage.getItem("response_status")
+  var token = localStorage.getItem("access_token")
 
-  if (user_status_is_200 === '200') {
+  if (token) {
     user_account_buttons = userLoggedButtons()
   } else {
     user_account_buttons = userNotLoggedButtons()
