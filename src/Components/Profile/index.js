@@ -8,13 +8,13 @@ import {
     Container,
     Row,
     Col,
-    Image,
-    Figure,
     Card,
+    Nav,
     ListGroup,
     Button,
     Accordion
 } from 'react-bootstrap'
+
 
 
 export class ProfilePage extends React.Component {
@@ -102,13 +102,13 @@ export class ProfilePage extends React.Component {
                         <Card.Header>Contact Information</Card.Header>
                         <Card.Body>
                             <ListGroup variant="flush">
-                                <ListGroup.Item> <span>First name: {this.state.first_name}</span></ListGroup.Item>
-                                <ListGroup.Item><span>Last name: {this.state.last_name}</span></ListGroup.Item>
-                                <ListGroup.Item><span>Email: {this.state.email}</span></ListGroup.Item>
-                                <ListGroup.Item><span>Location: {this.state.location}</span></ListGroup.Item>
-                                <ListGroup.Item><span>Phone number: {this.state.phone_number}</span></ListGroup.Item>
+                                <ListGroup.Item> <span> First name: {this.state.first_name} </span></ListGroup.Item>
+                                <ListGroup.Item><span> Last name: {this.state.last_name} </span></ListGroup.Item>
+                                <ListGroup.Item><span> Email: {this.state.email} </span></ListGroup.Item>
+                                <ListGroup.Item><span> Location: {this.state.location} </span></ListGroup.Item>
+                                <ListGroup.Item><span> Phone number: {this.state.phone_number} </span></ListGroup.Item>
                             </ListGroup>
-                            <Button variant='primary' onClick={this.getBasicInfo}>Edit</Button>
+                            <Button variant='primary' href="profile/edit-contact-info/">Edit</Button>
                         </Card.Body>
                     </Card>
                     </Col>

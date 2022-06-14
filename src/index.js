@@ -32,6 +32,7 @@ import {App} from "./App"
 import { RegisterPage } from './Components/Register';
 import {ProfilePage} from "./Components/Profile"
 import {LogoutRedirectView} from "./Components/logout/index"
+import { EditContactInfoPage } from './Components/Profile/EditContactInfo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
@@ -49,7 +50,9 @@ root.render(
                 <Route path="login" element={<LoginPage/>}></Route>
                 <Route path="register" element={<RegisterPage/>}></Route>
                 <Route path="profile" element={<ProfilePage/>}></Route>
+                <Route path="profile/edit-contact-info/" element={<EditContactInfoPage/>}></Route>
                 <Route path="logout" element={<LogoutRedirectView/>}></Route>
+
 
 
 
