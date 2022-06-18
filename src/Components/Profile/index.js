@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-
+import { RefreshTokenAPICall } from '../../API/refresh_token';
 
 
 // import the react bootstrap elements
@@ -30,21 +30,15 @@ export class ProfilePage extends React.Component {
             phone_number:"",
         }
 
-        // this.handleSubmit = this.handleSubmit.bind(this)
-        // this.handleInputChange = this.handleInputChange.bind(this)
         this.getBasicInfo = this.getBasicInfo.bind(this)
 
     }
 
-    getBasicInfo(){
-        // let user = {
-        //     email: email,
-        //     password: password
-        // }
-    
+    async getBasicInfo(){
+        // get the basic contact info to display in the main profile page
         var id = localStorage.getItem("user_id")
-    
-        fetch(`http://127.0.0.1:8000/users/${id}/`, {
+        await RefreshTokenAPICall()
+        await fetch(`http://127.0.0.1:8000/users/${id}/`, {
             method: "get",
             headers: {
                 "Accept": "application/json",
@@ -62,31 +56,22 @@ export class ProfilePage extends React.Component {
                     phone_number:data.phone_number,
                     location: `${data.city_of_residence}, ${data.state_province}, ${data.country}`
                 })
-                console.log(data)
 
 
             })
             .catch(error => {
+
                 console.error("Error: \n", error)
+
             })
     }
 
     componentDidMount(){
+        // after component mount, execute this command
         this.getBasicInfo()
         
     }
-    // {
-        
-    //     const triggerGetInfo = new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             this.getBasicInfo()
-    //         }, 500)
-    //     })
 
-    //     triggerGetInfo.then("", "")
-
-
-    // }
 
 
 

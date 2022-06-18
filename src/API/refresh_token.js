@@ -19,7 +19,6 @@ export function RefreshTokenAPICall (){
         .then(data => {
             if (data.access) {
                 localStorage.setItem("access_token", data.access)
-                window.location.replace("/")
                 
             } else {
                 this.setState({alert_message:data.detail})

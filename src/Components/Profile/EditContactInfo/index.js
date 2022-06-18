@@ -33,7 +33,6 @@ export class EditContactInfoPage extends React.Component {
             city_of_residence:"",
             state_province: "",
             country:"",
-            refresh_var: null
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -43,8 +42,9 @@ export class EditContactInfoPage extends React.Component {
 
 
     async componentDidMount(refresh=false) {
-
+        // retrieve basic contact information so the user can easily modify the only info they need
         let id = localStorage.getItem("user_id") 
+        await RefreshTokenAPICall()
         await fetch(`http://127.0.0.1:8000/users/${id}/`,{
             method: "get",
             headers: {
@@ -66,19 +66,17 @@ export class EditContactInfoPage extends React.Component {
                     city_of_residence: data.city_of_residence,
                     state_province:data.state_province,
                     country: data.country,
-                    // location: `${data.city_of_residence}, ${data.state_province}, ${data.country}`
                 })
             })
             .catch(error_var => {
                 console.error(error_var)
-                RefreshTokenAPICall()
-                this.setState({refresh_var:window.location.replace(`http://127.0.0.1:3000/profile/edit-contact-info/`)})
                 return window.location.replace(`http://127.0.0.1:3000/profile/edit-contact-info/`)
             })
 
     }
 
     handleInputChange = (e) => {
+        // handle the form data input
         let value = e.target.value;
         let name = e.target.name;
         
@@ -88,11 +86,13 @@ export class EditContactInfoPage extends React.Component {
             }
         })
 
-        console.log(this.state)
     }
-
-    async handleFormSubmit() {
-        let id = localStorage.getItem("user_id") 
+    
+    handleFormSubmit = async ()=>  {
+        // handle the form submission and updating the model information in the api
+        let id = parseInt(localStorage.getItem("user_id")) 
+        
+        await RefreshTokenAPICall()
         let form_data = {
             first_name: this.state.first_name, 
             last_name: this.state.last_name, 
@@ -102,23 +102,28 @@ export class EditContactInfoPage extends React.Component {
             state_province:this.state.state_province,
             country: this.state.country,
         }
+
+
         await fetch(`http://127.0.0.1:8000/users/${id}/`,{
-            method: "post",
+            method: "PATCH",
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin":"http://127.0.0.1:3000",
                 "Authorization": `Bearer ${localStorage.getItem("access_token")}`,
             },
             body: JSON.stringify(form_data)
             })
             .then(response => response.json())
             .then(data => {
-                window.location.replace("http://127.0.0.1:3000/profile/")
+                // this can be empty it is not needed for now
             })
             .catch(error => {
                 console.error("Error: \n", error)
             })
-            
+
+        await window.location.replace("/profile/")
+
     }
 
     render() {
@@ -126,7 +131,7 @@ export class EditContactInfoPage extends React.Component {
         return(
 
             <Container className='profile_container'>
-                <Form >
+                <Form action='/profile/'>
                 <br/>
                 <h1>Profile</h1>
 
