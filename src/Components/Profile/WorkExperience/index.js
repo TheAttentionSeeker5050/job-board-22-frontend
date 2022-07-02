@@ -23,8 +23,8 @@ export class WorkExperienceList extends React.Component {
             work_experience_obj:[]
         }
         this.getWorkExperienceByUser = this.getWorkExperienceByUser.bind(this)
-        this.renderJobElement = this.renderJobElement.bind(this)
-        this.renderAllElements = this.renderAllElements.bind(this)
+        this.RenderJobElement = this.RenderJobElement.bind(this)
+        this.getWorkExperienceResponse = []
 
     }
 
@@ -47,24 +47,26 @@ export class WorkExperienceList extends React.Component {
         })
             .then(response => response.json())
             .then(data => {
+                this.getWorkExperienceResponse = data
                 this.setState({work_experience_obj: data})
-                console.log(data)
-                console.log(typeof(data))
+
             })
     
         
     }
 
-    renderJobElement(job_element) {
+    RenderJobElement(job_element) {
+        let element = job_element.job_element
+
         return (
             <Card >
-                    <Card.Header><span>Company: {job_element.company} </span></Card.Header>
+                    <Card.Header><span>Company: </span></Card.Header>
                     <Card.Body>
                         <ListGroup variant="flush">
-                            <ListGroup.Item> <span>Position: {job_element.job_title} </span></ListGroup.Item>
-                            <ListGroup.Item><span>Start Date: {job_element.start_date} </span></ListGroup.Item>
-                            <ListGroup.Item><span>End Date: {job_element.end_date} </span></ListGroup.Item>
-                            <ListGroup.Item> <span>Description: {job_element.description} </span></ListGroup.Item>
+                            <ListGroup.Item> <span>Position: {element.job_title} </span></ListGroup.Item>
+                            <ListGroup.Item><span>Start Date: {element.start_date} </span></ListGroup.Item>
+                            <ListGroup.Item><span>End Date: {element.end_date} </span></ListGroup.Item>
+                            <ListGroup.Item> <span>Description: {element.description} </span></ListGroup.Item>
                         </ListGroup>
                         <div className='button-div'>
 
@@ -82,37 +84,34 @@ export class WorkExperienceList extends React.Component {
         // after component mount, execute this command
 
         this.getWorkExperienceByUser()
-
+        // console.log(this.state.work_experience_obj)
+        // console.log(typeof(this.state.work_experience_obj))
 
     }
 
-    renderAllElements() {
-        if (this.state.work_experience_obj) {
-            // this.all_elements = this.state.work_experience_obj
-            return (
-                
-                <div>The elements are rendered </div>
-            )
-        } else {
-            return <div>The elements are not rendered</div>
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.work_experience_obj !== prevState.work_experience_obj) {
+            // console.log("component updated")
+            // console.log("array:",this.getWorkExperienceResponse )
+            // console.log(typeof(this.getWorkExperienceResponse))
+
+            this.render()
         }
     }
+
+
 
     render () {
-        const {data} = this.state.work_experience_obj
-        if (this.state.work_experience_obj) {
-            // this.all_elements = this.state.work_experience_obj
-            return (
+  
+        return (
                 
-                <React.Fragment>
-                    {Array.isArray(data) && data.map(element => (
-                        <renderJobElement job_element={element}/>
-                    ))}
-                </React.Fragment>
-            )
-        } else {
-            return <div>The elements are not rendered</div>
-        }
+            <React.Fragment>
+                {Array.isArray(this.state.work_experience_obj) && this.state.work_experience_obj.map(element => (
+                    <this.RenderJobElement key={Math.floor(Math.random()*10000000000).toString()} job_element={element}/>
+                )) || <p>Cannot display elements</p>}
+            </React.Fragment>
+        )
+        
         
     }
 

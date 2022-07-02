@@ -30,7 +30,6 @@ export class ProfilePage extends React.Component {
             phone_number:"",
             
         }
-        this.state.work_experience_obj = {}
 
         this.getBasicInfo = this.getBasicInfo.bind(this)
 
