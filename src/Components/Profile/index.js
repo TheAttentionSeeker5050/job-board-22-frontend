@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import { RefreshTokenAPICall } from '../../API/refresh_token';
-
+import {WorkExperienceList} from './WorkExperience'
 
 // import the react bootstrap elements
 import {
@@ -28,7 +28,9 @@ export class ProfilePage extends React.Component {
             email:"",
             location:"",
             phone_number:"",
+            
         }
+        this.state.work_experience_obj = {}
 
         this.getBasicInfo = this.getBasicInfo.bind(this)
 
@@ -65,6 +67,8 @@ export class ProfilePage extends React.Component {
 
             })
     }
+
+
 
     componentDidMount(){
         // after component mount, execute this command
@@ -105,19 +109,9 @@ export class ProfilePage extends React.Component {
                         <Accordion.Item eventKey='0'>
                             <Accordion.Header><h2>Work Experience </h2></Accordion.Header>
                             <Accordion.Body>
-                                <Card >
-                                    <Card.Header>Company: </Card.Header>
-                                    <Card.Body>
-                                        <ListGroup variant="flush">
-                                            <ListGroup.Item> <span>Position: </span></ListGroup.Item>
-                                            <ListGroup.Item><span>Start Date: </span></ListGroup.Item>
-                                            <ListGroup.Item><span>End Date: </span></ListGroup.Item>
-                                            <ListGroup.Item> <span>Description: </span></ListGroup.Item>
-                                        </ListGroup>
-                                        <Button variant='primary'>Edit</Button>
-
-                                    </Card.Body>
-                                </Card>
+                                {/* this is for all the work experience elements */}
+                                <WorkExperienceList user_id={1}/> 
+                                {/* end */}
                             </Accordion.Body>
                         </Accordion.Item>
                         
