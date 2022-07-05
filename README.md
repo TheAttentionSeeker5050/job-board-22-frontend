@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Job Board App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://i.imgur.com/0ZqkGtp.jpeg)
 
-## Available Scripts
+Front end for my job board website
 
-In the project directory, you can run:
+##  This is a work in progress
 
-### `npm start`
+This is a work in progress django app. 
+At it's finalization it will have a frontend react part and the backend django part in which I am working at this moment. This app is a job board for blue collar jobs. My father is a hard working fireman, who has worked hard to raise 1 son (me) and my 2 sisters. Even today, he gives a hand to his children and give powerful advice every now and then. This is a living tribute to him. It is done with love and I expect to deploy it on heroku or google cloud soon as a personal project. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Expected features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Browse blue collar jobs as a candidate and apply to them
+- An user model and 2 submodels candidate and company (employer or jobposter)
+- Post jobs as an employer
+- Register as an employer or as a job candidate, or both
+- Upload your cv
+- Send your preffered cv to the company that holds the job post
+- Search, order and filter jobs
+- Jobpost pagination
+- An employer qualification and review system, where former employers can post their reviews anonymously, and they can give tips too, like what to expect, how to fit better on the position, the company culture etc.
+- These reviews in the future could be posted in companies not registered with us, another db schema of non registered companies could be added too.
 
-### `npm test`
+### Technogies to be used in version 1.0
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- Django and django rest framework
+- Pillow
+- React router 
+- Postgresql
+- JWT authentication
